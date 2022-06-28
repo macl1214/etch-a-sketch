@@ -7,13 +7,14 @@ const grid = document.querySelector('.grid');
 const colorInput = document.querySelector("#colorInput");
 const randomBtn = document.querySelector(".random-btn");
 const rainbowBtn = document.querySelector(".rainbow-btn");
+const eraseBtn = document.querySelector(".erase-btn");
 const clearBtn = document.querySelector(".clear-btn");
 const gridSize = document.querySelector("#gridSize");
 
 window.addEventListener('load', setUpGrid());
 colorInput.addEventListener('change', updateColor);
-// clearBtn.addEventListener('click', clearGrid);
-// clearBtn.addEventListener('click', clearGrid);
+rainbowBtn.addEventListener('click', () => mode="rainbow");
+eraseBtn.addEventListener('click', () => mode="erase");
 clearBtn.addEventListener('click', clearGrid);
 gridSize.addEventListener('input', changeGridSizeLabel);
 gridSize.addEventListener('change', changeBoxSize);
@@ -63,6 +64,8 @@ function addColor(e) {
     box.style.backgroundColor = curColor;
   } else if (mode === "rainbow") {
     box.style.backgroundColor = randomColor();
+  } else if (mode === "erase") {
+    box.style.backgroundColor = "#ffffff";
   }
 }
 
@@ -91,4 +94,6 @@ function updateColor(e) {
 function clearGrid() {
   grid.innerHTML = "";
   setUpGrid(curSize);
+
+  mode = (mode === "erase") ? "normal" : mode;
 }

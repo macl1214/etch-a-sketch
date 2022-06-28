@@ -2,11 +2,14 @@ let color = "rgb(0, 0, 0)";
 let random = false;
 
 const colorInput = document.querySelector("#colorInput");
-const gridSizeBtn = document.querySelector(".custom-btn");
+const gridSize = document.querySelector("#gridSize");
+const clearBtn = document.querySelector(".clear-btn")
 
 window.addEventListener('load', setUpGrid());
-colorInput.addEventListener('click', callColorInput);
-gridSizeBtn.addEventListener('click', changeBoxSize);
+// colorInput.addEventListener('click', callColorInput);
+gridSize.addEventListener('input', changeGridSizeLabel);
+gridSize.addEventListener('change', changeBoxSize);
+clearBtn.addEventListener('click', clearGrid);
 
 function setUpGrid(size = 16) {
   const grid = document.querySelector(".grid");
@@ -52,19 +55,16 @@ function addColor(e) {
 }
 
 function changeBoxSize(e) {
+  const size = e.target.value;
 
-  while (true) {
-    const size = Number.parseInt(prompt("How many boxes do you want per side?"));
-
-    if (Number.isInteger(size) && (size > 0 && size <= 100)) {
-      setUpGrid(size);
-      break;
-    } else {
-      alert("Enter in a number between 1 and 100");  
-    }
-  }
+  setUpGrid(size);
 }
 
-function callColorInput() {
-  
+function changeGridSizeLabel(e) {
+  let size = e.target.value;
+  let message = `${size} x ${size}`;
+
+  const gridSizeLabel = document.querySelector('.grid-size-label');
+
+  gridSizeLabel.innerText = message;
 }

@@ -14,6 +14,7 @@ const gridSize = document.querySelector("#gridSize");
 window.addEventListener('load', setUpGrid());
 colorInput.addEventListener('change', updateColor);
 rainbowBtn.addEventListener('click', () => mode="rainbow");
+randomBtn.addEventListener('click', changeRandomColor)
 eraseBtn.addEventListener('click', () => mode="erase");
 clearBtn.addEventListener('click', clearGrid);
 gridSize.addEventListener('input', changeGridSizeLabel);
@@ -42,28 +43,24 @@ function addBox(grid, id) {
   grid.appendChild(gridBox);
 }
 
-function randomRGBNumber() {
-  return Math.floor(Math.random() * 256);
-}
-
-function randomColor() {
-  const r = randomRGBNumber();
-  const g = randomRGBNumber();
-  const b = randomRGBNumber();
-
-  return `rgb(${r}, ${g}, ${b})`;
+function getRandomColor() {
+  let colorHex = "#";
+  for (let i = 0; i < 6; i++) {
+    colorHex += (Math.floor(Math.random() * 16)).toString(16);
+  }
+  return colorHex;
 }
 
 function addColor(e) {
   const id = e.target.id;
   const box = document.getElementById(`${id}`);
 
-  box.style.backgroundColor = randomColor();
+  box.style.backgroundColor = getRandomColor();
 
   if (mode === "normal") {
     box.style.backgroundColor = curColor;
   } else if (mode === "rainbow") {
-    box.style.backgroundColor = randomColor();
+    box.style.backgroundColor = getRandomColor();
   } else if (mode === "erase") {
     box.style.backgroundColor = "#ffffff";
   }
@@ -89,6 +86,13 @@ function updateColor(e) {
   
   mode = "normal";
   curColor = chosenColor;
+}
+
+function changeRandomColor() {
+  curColor = getRandomColor();
+  colorInput.value = curColor;
+
+  mode = "normal";
 }
 
 function clearGrid() {

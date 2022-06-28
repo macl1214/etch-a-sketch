@@ -1,7 +1,10 @@
-function setUpGrid() {
+function setUpGrid(size = 16) {
   const grid = document.querySelector(".grid");
-  let squaresPerSide = 16;
+  grid.innerHTML = "";
+  let squaresPerSide = size;
 
+  grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+  
   for (let i = 1; i <= squaresPerSide ** 2; i++) {
     addBox(grid, i);
   }
@@ -38,11 +41,21 @@ function addColor(e) {
   box.style.backgroundColor = randomColor();
 }
 
-function changeBoxSize() {
-  
+function changeBoxSize(e) {
+
+  while (true) {
+    const size = Number.parseInt(prompt("How many boxes do you want per side?"));
+
+    if (Number.isInteger(size) && (size > 0 && size <= 100)) {
+      setUpGrid(size);
+      break;
+    } else {
+      alert("Enter in a number between 1 and 100");  
+    }
+  }
 }
 
-window.addEventListener('load', setUpGrid);
+window.addEventListener('load', setUpGrid());
 
 const gridSizeBtn = document.querySelector(".custom-btn");
 gridSizeBtn.addEventListener('click', changeBoxSize);

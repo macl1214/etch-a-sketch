@@ -1,3 +1,13 @@
+let color = "rgb(0, 0, 0)";
+let random = false;
+
+const colorInput = document.querySelector("#colorInput");
+const gridSizeBtn = document.querySelector(".custom-btn");
+
+window.addEventListener('load', setUpGrid());
+colorInput.addEventListener('click', callColorInput);
+gridSizeBtn.addEventListener('click', changeBoxSize);
+
 function setUpGrid(size = 16) {
   const grid = document.querySelector(".grid");
   grid.innerHTML = "";
@@ -55,7 +65,6 @@ function changeBoxSize(e) {
   }
 }
 
-window.addEventListener('load', setUpGrid());
-
-const gridSizeBtn = document.querySelector(".custom-btn");
-gridSizeBtn.addEventListener('click', changeBoxSize);
+function callColorInput() {
+  
+}

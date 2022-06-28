@@ -4,7 +4,7 @@ function setUpGrid(size = 16) {
   let squaresPerSide = size;
 
   grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-  
+
   for (let i = 1; i <= squaresPerSide ** 2; i++) {
     addBox(grid, i);
   }

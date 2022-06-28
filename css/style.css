@@ -1,7 +1,44 @@
+body {
+  background-color: #EDEDED;
+}
+
 .container {
   text-align: center;
-  width: 1000px;
+  width: 500px;
+  height: auto;
   margin: auto;
+}
+
+.title {
+  font-family: Trispace;
+  font-size: 50px;
+}
+
+.options {
+  margin-top: 20px;
+}
+
+.palette {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px black solid;
+  padding: 10px;
+  font-size: 20px;
+}
+
+#color-picker {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-block;
+  
+  background-color: blue;
+}
+
+#color {
+  border: none;
+  /* display: none; */
 }
 
 .custom-btn {
@@ -11,8 +48,11 @@
 }
 
 .grid {
+  background-color: white;
   display: grid;
+  grid-template-columns: repeat(16, 1fr);
   grid-auto-rows: 1fr;
+  border: 1px black solid;
 }
 
 .grid::before {
@@ -29,6 +69,6 @@
 }
 
 .grid-box {
-  border: 1px black solid;
+  /* border: 1px white solid; */
   color: black;
 }

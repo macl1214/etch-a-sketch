@@ -10,7 +10,7 @@ body {
 }
 
 .title {
-  font-family: Trispace;
+  font-family: Trispace, 'Sans Serif';
   font-size: 50px;
 }
 
@@ -72,9 +72,9 @@ body {
 
 .options > button {
   border-radius: 5px;
-  width: 100px;
-  padding: 10px;
-  font-size: 20px;
+  width: 80px;
+  padding: 8px;
+  font-size: 15px;
 }
 
 .sizing {

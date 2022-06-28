@@ -1,18 +1,20 @@
-let color = "rgb(0, 0, 0)";
-let random = false;
+let curColor = "rgb(0, 0, 0)";
+let mode = "normal";
+let curSize = 16;
 
+const backgroundColor = "rgb(255, 255, 255)";
+const grid = document.querySelector('.grid');
 const colorInput = document.querySelector("#colorInput");
 const gridSize = document.querySelector("#gridSize");
-const clearBtn = document.querySelector(".clear-btn")
+const clearBtn = document.querySelector(".clear-btn");
 
 window.addEventListener('load', setUpGrid());
-// colorInput.addEventListener('click', callColorInput);
+colorInput.addEventListener('change', updateColor);
 gridSize.addEventListener('input', changeGridSizeLabel);
 gridSize.addEventListener('change', changeBoxSize);
 clearBtn.addEventListener('click', clearGrid);
 
 function setUpGrid(size = 16) {
-  const grid = document.querySelector(".grid");
   grid.innerHTML = "";
   let squaresPerSide = size;
 
@@ -67,4 +69,13 @@ function changeGridSizeLabel(e) {
   const gridSizeLabel = document.querySelector('.grid-size-label');
 
   gridSizeLabel.innerText = message;
+}
+
+function updateColor() {
+  
+}
+
+function clearGrid() {
+  grid.innerHTML = "";
+  setUpGrid(curSize);
 }

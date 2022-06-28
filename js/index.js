@@ -5,14 +5,18 @@ let curSize = 16;
 const backgroundColor = "rgb(255, 255, 255)";
 const grid = document.querySelector('.grid');
 const colorInput = document.querySelector("#colorInput");
-const gridSize = document.querySelector("#gridSize");
+const randomBtn = document.querySelector(".random-btn");
+const rainbowBtn = document.querySelector(".rainbow-btn");
 const clearBtn = document.querySelector(".clear-btn");
+const gridSize = document.querySelector("#gridSize");
 
 window.addEventListener('load', setUpGrid());
 colorInput.addEventListener('change', updateColor);
+// clearBtn.addEventListener('click', clearGrid);
+// clearBtn.addEventListener('click', clearGrid);
+clearBtn.addEventListener('click', clearGrid);
 gridSize.addEventListener('input', changeGridSizeLabel);
 gridSize.addEventListener('change', changeBoxSize);
-clearBtn.addEventListener('click', clearGrid);
 
 function setUpGrid(size = 16) {
   grid.innerHTML = "";
@@ -54,6 +58,12 @@ function addColor(e) {
   const box = document.getElementById(`${id}`);
 
   box.style.backgroundColor = randomColor();
+
+  if (mode === "normal") {
+    box.style.backgroundColor = curColor;
+  } else if (mode === "rainbow") {
+    box.style.backgroundColor = randomColor();
+  }
 }
 
 function changeBoxSize(e) {
@@ -71,8 +81,11 @@ function changeGridSizeLabel(e) {
   gridSizeLabel.innerText = message;
 }
 
-function updateColor() {
+function updateColor(e) {
+  const chosenColor = e.target.value;
   
+  mode = "normal";
+  curColor = chosenColor;
 }
 
 function clearGrid() {

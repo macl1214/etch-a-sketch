@@ -38,4 +38,11 @@ function addColor(e) {
   box.style.backgroundColor = randomColor();
 }
 
+function changeBoxSize() {
+  
+}
+
 window.addEventListener('load', setUpGrid);
+
+const gridSizeBtn = document.querySelector(".custom-btn");
+gridSizeBtn.addEventListener('click', changeBoxSize);
